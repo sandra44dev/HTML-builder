@@ -14,7 +14,9 @@ stdin.on('data', data => {
     process.exit();
   }
   output.write(data);
+  /* watch file for real-time upgrade */
+  fs.watch(filePath);
 });
 
-process.on('exit', () => stdout.write('Удачи!'));
+process.on('exit', () => stdout.write('Спасибо за проверку! Удачи!'));
 process.on('SIGINT', process.exit);
