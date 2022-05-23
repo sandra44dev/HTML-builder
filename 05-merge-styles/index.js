@@ -4,6 +4,10 @@ const path = require('path');
 const originalStylesDir = path.join(__dirname, 'styles');
 const bundle = path.join(__dirname, 'project-dist', 'bundle.css');
 
+/* create write stream without append flag to clear the file */
+const clearBundle = fs.createWriteStream(bundle);
+clearBundle.write('');
+
 const output = fs.createWriteStream(bundle, { 'flags': 'a' });
 
 fs.readdir(originalStylesDir, (err, files) => {
